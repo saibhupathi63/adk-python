@@ -119,6 +119,8 @@ coordinator = LlmAgent(
 )
 ```
 
+**Need to combine RAG tools with custom functions?** Check out the [tool-runner agent pattern](contributing/samples/tool_runner_rag_pattern/) for the recommended architectural approach to work around API constraints.
+
 ### Development UI
 
 A built-in development UI to help you test, evaluate, debug, and showcase your agent(s).
