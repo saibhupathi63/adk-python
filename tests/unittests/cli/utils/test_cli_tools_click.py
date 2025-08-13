@@ -204,12 +204,7 @@ def test_cli_deploy_cloud_run_default_build_image(
   assert result.exit_code == 0
   assert rec.calls, "cli_deploy.to_cloud_run must be invoked"
   called_kwargs = rec.calls[0][1]
-  assert (
-      called_kwargs.get("build_image")
-      == cli_tools_click.BASE_BUILD_IMAGE
-  )
-
-
+  assert called_kwargs.get("build_image") == cli_tools_click.BASE_BUILD_IMAGE
 
 
 def test_cli_deploy_cloud_run_failure(
@@ -329,12 +324,7 @@ def test_cli_deploy_gke_default_build_image(
   assert result.exit_code == 0
   assert rec.calls, "cli_deploy.to_gke must be invoked"
   called_kwargs = rec.calls[0][1]
-  assert (
-      called_kwargs.get("build_image")
-      == cli_tools_click.BASE_BUILD_IMAGE
-  )
-
-
+  assert called_kwargs.get("build_image") == cli_tools_click.BASE_BUILD_IMAGE
 
 
 # cli eval
