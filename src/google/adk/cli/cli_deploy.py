@@ -20,8 +20,7 @@ from typing import Optional
 
 import click
 
-
-BASE_BUILD_IMAGE="python:3.11-slim"
+BASE_BUILD_IMAGE = 'python:3.11-slim'
 
 _DOCKERFILE_TEMPLATE = """
 FROM {build_image}

@@ -975,9 +975,7 @@ def cli_api_server(
     type=str,
     default=BASE_BUILD_IMAGE,
     show_default=True,
-    help=(
-        "Optional. The docker build version used in Cloud Run deployment. "
-    ),
+    help="Optional. The docker build version used in Cloud Run deployment. ",
 )
 # TODO: Add eval_storage_uri option back when evals are supported in Cloud Run.
 @adk_services_options()
@@ -1299,9 +1297,7 @@ def cli_deploy_agent_engine(
     type=str,
     default=BASE_BUILD_IMAGE,
     show_default=True,
-    help=(
-        "Optional. The docker build version used in GKE deployment. "
-    ),
+    help="Optional. The docker build version used in GKE deployment. ",
 )
 @adk_services_options()
 @click.argument(
