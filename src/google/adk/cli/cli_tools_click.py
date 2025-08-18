@@ -44,6 +44,8 @@ LOG_LEVELS = click.Choice(
     case_sensitive=False,
 )
 
+BASE_BUILD_IMAGE = "python:3.11-slim"
+
 
 class HelpfulCommand(click.Command):
   """Command that shows full help on error instead of just the error message.
@@ -968,6 +970,14 @@ def cli_api_server(
     help="Optional. Any additional origins to allow for CORS.",
     multiple=True,
 )
+@click.option(
+    "--build_image",
+    type=str,
+    default=BASE_BUILD_IMAGE,
+    show_default=True,
+    help="Optional. The docker build version used in Cloud Run deployment. ",
+)
+
 # TODO: Add eval_storage_uri option back when evals are supported in Cloud Run.
 @adk_services_options()
 @deprecated_adk_services_options()
@@ -985,6 +995,7 @@ def cli_deploy_cloud_run(
     log_level: str,
     verbosity: Optional[str],
     allow_origins: Optional[list[str]] = None,
+    build_image: str = BASE_BUILD_IMAGE,
     session_service_uri: Optional[str] = None,
     artifact_service_uri: Optional[str] = None,
     memory_service_uri: Optional[str] = None,
@@ -1029,6 +1040,7 @@ def cli_deploy_cloud_run(
         artifact_service_uri=artifact_service_uri,
         memory_service_uri=memory_service_uri,
         a2a=a2a,
+        build_image=build_image,
     )
   except Exception as e:
     click.secho(f"Deploy failed: {e}", fg="red", err=True)
@@ -1281,6 +1293,13 @@ def cli_deploy_agent_engine(
         " version in the dev environment)"
     ),
 )
+@click.option(
+    "--build_image",
+    type=str,
+    default=BASE_BUILD_IMAGE,
+    show_default=True,
+    help="Optional. The docker build version used in GKE deployment. ",
+)
 @adk_services_options()
 @click.argument(
     "agent",
@@ -1304,6 +1323,7 @@ def cli_deploy_gke(
     session_service_uri: Optional[str] = None,
     artifact_service_uri: Optional[str] = None,
     memory_service_uri: Optional[str] = None,
+    build_image: Optional[str] = BASE_BUILD_IMAGE,
 ):
   """Deploys an agent to GKE.
 
@@ -1330,6 +1350,7 @@ def cli_deploy_gke(
         session_service_uri=session_service_uri,
         artifact_service_uri=artifact_service_uri,
         memory_service_uri=memory_service_uri,
+        build_image=build_image,
     )
   except Exception as e:
     click.secho(f"Deploy failed: {e}", fg="red", err=True)
