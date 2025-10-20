@@ -128,13 +128,13 @@ class RestApiTool(BaseTool):
         else operation
     )
     self.auth_credential, self.auth_scheme = None, None
-    self._default_headers: Dict[str, str] = {}
 
     self.configure_auth_credential(auth_credential)
     self.configure_auth_scheme(auth_scheme)
 
     # Private properties
     self.credential_exchanger = AutoAuthCredentialExchanger()
+    self._default_headers: Dict[str, str] = {}
     if should_parse_operation:
       self._operation_parser = OperationParser(self.operation)
 
@@ -219,7 +219,7 @@ class RestApiTool(BaseTool):
 
   def set_default_headers(self, headers: Dict[str, str]):
     """Sets default headers that are merged into every request."""
-    self._default_headers = dict(headers)
+    self._default_headers = headers
 
   def _prepare_auth_request_params(
       self,

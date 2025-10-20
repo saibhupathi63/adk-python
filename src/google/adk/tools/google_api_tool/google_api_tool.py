@@ -47,7 +47,7 @@ class GoogleApiTool(BaseTool):
         is_long_running=rest_api_tool.is_long_running,
     )
     self._rest_api_tool = rest_api_tool
-    self._rest_api_tool.set_default_headers(additional_headers or {})
+    if additional_headers: self._rest_api_tool.set_default_headers(additional_headers)
     if service_account is not None:
       self.configure_sa_auth(service_account)
     elif client_id is not None and client_secret is not None:

@@ -67,7 +67,7 @@ class GoogleApiToolset(BaseToolset):
     self._client_id = client_id
     self._client_secret = client_secret
     self._service_account = service_account
-    self._additional_headers = dict(additional_headers or {})
+    self._additional_headers = additional_headers
     self._openapi_toolset = self._load_toolset_with_oidc_auth()
 
   @override
