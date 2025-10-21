@@ -59,6 +59,7 @@ class GoogleApiToolset(BaseToolset):
       tool_filter: Optional[Union[ToolPredicate, List[str]]] = None,
       service_account: Optional[ServiceAccount] = None,
       tool_name_prefix: Optional[str] = None,
+      *,
       additional_headers: Optional[Dict[str, str]] = None,
   ):
     super().__init__(tool_filter=tool_filter, tool_name_prefix=tool_name_prefix)
@@ -81,7 +82,7 @@ class GoogleApiToolset(BaseToolset):
             self._client_id,
             self._client_secret,
             self._service_account,
-            self._additional_headers,
+            additional_headers=self._additional_headers,
         )
         for tool in await self._openapi_toolset.get_tools(readonly_context)
         if self._is_tool_selected(tool, readonly_context)

@@ -214,7 +214,11 @@ class TestGoogleApiToolset:
 
     for i, rest_tool in enumerate(mock_rest_api_tools):
       mock_google_api_tool_class.assert_any_call(
-          rest_tool, client_id, client_secret, sa_mock, additional_headers
+          rest_tool,
+          client_id,
+          client_secret,
+          sa_mock,
+          additional_headers=additional_headers,
       )
       assert tools[i] is mock_google_api_tool_instances[i]
 

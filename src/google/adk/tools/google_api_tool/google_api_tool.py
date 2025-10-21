@@ -39,6 +39,7 @@ class GoogleApiTool(BaseTool):
       client_id: Optional[str] = None,
       client_secret: Optional[str] = None,
       service_account: Optional[ServiceAccount] = None,
+      *,
       additional_headers: Optional[Dict[str, str]] = None,
   ):
     super().__init__(
