@@ -25,8 +25,8 @@ from packaging.version import parse
 
 _DOCKERFILE_TEMPLATE: Final[str] = """
 FROM python:3.11-slim
-WORKDIR /app
-
+WORKDIR /app 
+ 
 # Create a non-root user
 RUN adduser --disabled-password --gecos "" myuser
 
